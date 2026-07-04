@@ -35,6 +35,11 @@ Parameters:
     Default: config.zip
     Description: S3 object key of the zip holding taskdef.json + appspec.yaml
 
+  ImagesEnvironmentPrefix:
+    Type: String
+    Default: photo-gallery
+    Description: Must match the EnvironmentPrefix used in the s3-cdn stack
+
 Resources:
   # ---------------------------------------------------------------------------
   # IAM roles
@@ -67,6 +72,31 @@ Resources:
             Principal:
               Service: ecs-tasks.amazonaws.com
             Action: sts:AssumeRole
+      Policies:
+        - PolicyName: AppS3ImagesAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                  - s3:GetObject
+                  - s3:DeleteObject
+                Resource:
+                  - !Sub
+                    - '${BucketArn}/*'
+                    - BucketArn: !ImportValue
+                        Fn::Sub: ${ImagesEnvironmentPrefix}-ImagesBucketArn
+        - PolicyName: AppDBSecretAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:GetSecretValue
+                Resource:
+                  - !ImportValue
+                    Fn::Sub: ${EnvironmentName}-DBSecretArn
       Tags:
         - Key: Name
           Value: !Sub ${EnvironmentName}-task-role
