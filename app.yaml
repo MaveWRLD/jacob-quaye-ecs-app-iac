@@ -104,6 +104,17 @@ Resources:
                   - ecs:ListTasks
                   - ecs:RegisterTaskDefinition
                   - ecs:UpdateService
+                  - ecs:CreateTaskSet
+                  - ecs:UpdateServicePrimaryTaskSet
+                  - ecs:DeleteTaskSet
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - elasticloadbalancing:DescribeTargetGroups
+                  - elasticloadbalancing:DescribeListeners
+                  - elasticloadbalancing:ModifyListener
+                  - elasticloadbalancing:DescribeRules
+                  - elasticloadbalancing:ModifyRule
                 Resource: '*'
               - Effect: Allow
                 Action:
