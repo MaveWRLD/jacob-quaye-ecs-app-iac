@@ -68,6 +68,16 @@ Resources:
                 Resource:
                   - !Sub arn:${AWS::Partition}:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ImagesEnvironmentPrefix}/s3/images-bucket-name
                   - !Sub arn:${AWS::Partition}:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ImagesEnvironmentPrefix}/cloudfront/domain-name
+        - PolicyName: TaskDefDBSecretAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:GetSecretValue
+                Resource:
+                  - !ImportValue
+                    Fn::Sub: ${EnvironmentName}-DBSecretArn
       Tags:
         - Key: Name
           Value: !Sub ${EnvironmentName}-task-execution-role
