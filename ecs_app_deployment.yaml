@@ -1,9 +1,12 @@
-template-file-path: ./app.yaml
-
+template-file-path: app.yaml
 parameters:
-  EnvironmentName: ecs-fargate-demo
+  ConfigObjectKey: config.zip
   ECRImageUri: 481980074895.dkr.ecr.eu-central-1.amazonaws.com/containerization-demo:latest
+  TaskCpu: '256'
   ECRRepositoryName: containerization-demo
-
+  EnvironmentName: ecs-fargate-demo
+  TaskMemory: '512'
+  ContainerPort: '8080'
+  ImagesEnvironmentPrefix: photo-gallery
 tags:
   ManagedBy: GitSync
