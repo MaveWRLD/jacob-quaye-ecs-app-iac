@@ -1,8 +1,8 @@
-# AWSTemplateFormatVersion: '2010-09-09'
-# Description: >
-#   App stack - ECS cluster, task definition, service, autoscaling,
-#   CodePipeline/CodeDeploy blue/green pipeline triggered by ECR image pushes.
-#   Depends on network stack exports.
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  App stack - ECS cluster, task definition, service, autoscaling,
+  CodePipeline/CodeDeploy blue/green pipeline triggered by ECR image pushes.
+  Depends on network stack exports.
 
 # Parameters:
 #   EnvironmentName:
