@@ -40,7 +40,7 @@ Description: >
 #     Default: photo-gallery
 #     Description: Must match the EnvironmentPrefix used in the s3-cdn stack
 
-# Resources:
+Resources:
 #   # ---------------------------------------------------------------------------
 #   # IAM roles
 #   # ---------------------------------------------------------------------------
