@@ -41,6 +41,9 @@ Description: >
 #     Description: Must match the EnvironmentPrefix used in the s3-cdn stack
 
 Resources:
+
+  Placeholder:
+      Type: AWS::CloudFormation::WaitConditionHandle
 #   # ---------------------------------------------------------------------------
 #   # IAM roles
 #   # ---------------------------------------------------------------------------
