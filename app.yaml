@@ -20,11 +20,11 @@ Parameters:
 
   TaskCpu:
     Type: String
-    Default: '256'
+    Default: '1024'
 
   TaskMemory:
     Type: String
-    Default: '512'
+    Default: '2048'
 
   ECRRepositoryName:
     Type: String
